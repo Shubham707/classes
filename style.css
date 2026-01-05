@@ -1,0 +1,33 @@
+
+body{
+	background-color:#ccc;
+}
+#logo{
+	background-color: purple;
+	max-height: 200 px;
+	max-width: 200px;
+	color: white;
+}
+
+.menu ul li{
+	position:;
+	float: right;
+	margin-left: 20px;
+	border-color: #ccc solid 1px;
+	list-style-type: none;
+	background-color:white;
+	text-decoration: solid underline purple 4px;
+	list-style: none !important;
+}
+.content{
+	background-color: blue;
+	margin-top: 50px;
+	color: white;
+}
+
+.content .left{
+    float: left;
+}
+.content .right{
+	float: right;
+}

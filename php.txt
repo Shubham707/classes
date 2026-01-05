@@ -1,0 +1,36 @@
+
+<?php ?>
+
+
+<?=?>
+
+
+
+### comment
+///  single line
+/* */ multiple line
+
+
+### DataType
+
+String
+int
+float
+bool
+array
+null
+object
+resource
+
+#### advance datatype 
+Global
+local
+static
+defind
+const
+
+####access modifier datatype
+
+public $item=[];
+private 
+protected
