@@ -1,7 +1,8 @@
 <?php
+error_reporting(0);
 include("db.php");
 
-	if(@$_POST['login']=="login"){
+	if($_POST['login']=="login"){
 
 		if($_POST['email']!='' && $_POST['password']!=''){
 
@@ -20,7 +21,7 @@ include("db.php");
 		}
 	}
 
-	if(@$_POST['reg']=="reg"){
+	if($_POST['reg']=="reg"){
 		 $name= $_POST['fullname'];
 		 $username=$_POST['fullname'];
 		 $email=$_POST['email'];
@@ -31,7 +32,7 @@ include("db.php");
 		 $state=$_POST['state'];
 		 $pincode=$_POST['pincode'];
 		 $sql="insert into users(username,email,password_hash,full_name) values('$username','$email','$password','$name')";
-		//$query=mysqli_query($db,$sql) or die("query is not excecute!");
+		$query=mysqli_query($db,$sql) or die("query is not excecute!");
 		if($query){
 			echo "insert successfully!";
 		}else{
@@ -39,4 +40,46 @@ include("db.php");
 		}
 
 	}
+	if($_POST['update']=="update"){
+		$user_id= $_POST["user_id"];
+		$name= $_POST['fullname'];
+		 $username=$_POST['fullname'];
+		 $email=$_POST['email'];
+		 $city=$_POST['city'];
+		 $state=$_POST['state'];
+		 $country=$_POST['country'];
+		 $pincode=$_POST['pincode'];
+		 $dob=$_POST['dob'];
+		 if($_FILES['file']['name']){
+		 	 $distination = "./uploads/";
+		 	$photo=$_FILES['file']['name'];
+		 	  $_FILES["file"]["tmp_name"];
+		 	$data=move_uploaded_file($_FILES["file"]["tmp_name"],
+            $distination . $_FILES["file"]["name"]);
+		 }
+		 
+
+		 //$sql="update set users username='$username',email='$email',full_name='$name' where id='$user_id'" ";
+
+		 
+		  $sql="insert into user_profiles(user_id,city,state,country,pincode,date_of_birth,photo) values('$user_id','$city','$state','$country','$pincode','$dob','$photo')";
+		$query=mysqli_query($db,$sql) or die("query is not excecute!");
+		if($query){
+			echo "insert successfully!";
+		}else{
+			die(msql_error());
+		}
+	}
+	if($_REQUEST['delete']=='delete'){
+
+		$id= $_REQUEST['id'];
+		 $sql="delete from users where id='$id'";
+		$query=mysqli_query($db,$sql) or die("query is not excecute!");
+		if($query){
+			echo "delete successfully!";
+		}else{
+			die(msql_error());
+		}
+	}
+
 ?>

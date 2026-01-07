@@ -28,7 +28,7 @@
 			<td><?php echo $data['full_name']?></td>
 			<td><?php echo $data['registration_date']?></td>
 			<td><?php echo $data['last_login']?></td>
-			<td><?php echo $data['id']?></td>
+			<td><a href="edit.php?id=<?php echo $data['id']?>">Edit</a> | <a href="user.php?id=<?php echo $data['id'];?>&delete=delete">Delete</a></td>
 		</tr>
 		<?php }?>
 	</table>
