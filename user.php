@@ -1,19 +1,37 @@
 <?php
-error_reporting(0);
-include("db.php");
 
-	if($_POST['login']=="login"){
+include("db.php");
+	if(@$_GET['logout']){
+		echo "logout";
+		session_destroy();
+		$msg= "User Logout! try again!?";
+			
+		header('Location:login.php');
+
+	}
+
+	if(@$_POST['login']=="login"){
+		
 
 		if($_POST['email']!='' && $_POST['password']!=''){
 
-			 $email=$_POST['email'];
-			 $password=sha1($_POST['password']);
+			  $email=$_POST['email'];
+			  $password=sha1($_POST['password']);
+			
 
-			 $sql="Select * from users where email='$email' and password_hash='$password'";
+			$sql="Select * from users where email='$email' and password_hash='$password'";
+			
 			$query=mysqli_query($db,$sql) or die("query is not excecute!");
+		
 			$data=mysqli_fetch_assoc($query) or die("num_rows gether then 0 then check query!");
 
-			print_r($data);
+			$_SESSION['user_name']=$data['username'];
+			$_SESSION['email']=$data['email'];
+			$_SESSION['unique_id']=$data['id'];
+
+			$msg= "Login successfully!";
+			
+			header('Location:profile.php');
 
 
 		}else{
@@ -21,7 +39,7 @@ include("db.php");
 		}
 	}
 
-	if($_POST['reg']=="reg"){
+	if(@$_POST['reg']=="reg"){
 		 $name= $_POST['fullname'];
 		 $username=$_POST['fullname'];
 		 $email=$_POST['email'];
@@ -34,13 +52,15 @@ include("db.php");
 		 $sql="insert into users(username,email,password_hash,full_name) values('$username','$email','$password','$name')";
 		$query=mysqli_query($db,$sql) or die("query is not excecute!");
 		if($query){
-			echo "insert successfully!";
+
+			$msg= "insert successfully!";
+			header('Location:view.php?msg='.$msg);
 		}else{
 			die(msql_error());
 		}
 
 	}
-	if($_POST['update']=="update"){
+	if(@$_POST['update']=="update"){
 		$user_id= $_POST["user_id"];
 		$name= $_POST['fullname'];
 		 $username=$_POST['fullname'];
@@ -65,18 +85,20 @@ include("db.php");
 		  $sql="insert into user_profiles(user_id,city,state,country,pincode,date_of_birth,photo) values('$user_id','$city','$state','$country','$pincode','$dob','$photo')";
 		$query=mysqli_query($db,$sql) or die("query is not excecute!");
 		if($query){
-			echo "insert successfully!";
+			$msg= "Update successfully!";
+			header('Location:view.php?msg='.$msg);
 		}else{
 			die(msql_error());
 		}
 	}
-	if($_REQUEST['delete']=='delete'){
+	if(@$_REQUEST['delete']=='delete'){
 
 		$id= $_REQUEST['id'];
 		 $sql="delete from users where id='$id'";
 		$query=mysqli_query($db,$sql) or die("query is not excecute!");
 		if($query){
-			echo "delete successfully!";
+			$msg= "Delete successfully!";
+			header('Location:view.php?msg='.$msg);
 		}else{
 			die(msql_error());
 		}

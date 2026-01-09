@@ -34,7 +34,7 @@
 			<input type="hidden" name="reg" value="reg">
 			<h2 > User Registration Form</h2>
 			<div class="box_set">
-				Full Name: <input type="text" name="fullname" id="fullname" class="fullname" value="Soham">
+				Full Name: <input type="text" name="fullname" id="fullname" class="fullname">
 			  Email: <input type="email" name="email" id="email">
 		    </div>
 		    <br>

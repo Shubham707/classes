@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div class="login_form">
-		<form name="myForm" action="user.php" onsubmit="return validateForm()" method="post">
+		<form name="myForm" action="login.php" onsubmit="return validateForm()" method="post">
 			<input type="hidden" name="login" value="login">
 			<h2 > Login Form</h2>
 			<div class="box_set">

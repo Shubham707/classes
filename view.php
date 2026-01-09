@@ -5,6 +5,14 @@
 </head>
 <body>
 	<div>
+		<div><A href="register.php">Add Record</a></div>
+		<div><A href="login.php">Login </a></div>
+		<?php
+		echo $_COOKIE[name];
+		if(@$_GET['msg']!=""){
+			echo '<h1>'.$_GET['msg'].'</h1>';
+		}
+		?>
 	<table border="1" width="70%" >
 		<tr>
 			<th>User Name</th>
@@ -28,7 +36,7 @@
 			<td><?php echo $data['full_name']?></td>
 			<td><?php echo $data['registration_date']?></td>
 			<td><?php echo $data['last_login']?></td>
-			<td><a href="edit.php?id=<?php echo $data['id']?>">Edit</a> | <a href="user.php?id=<?php echo $data['id'];?>&delete=delete">Delete</a></td>
+			<td><a href="edit.php?id=<?php echo $data['id']?>">Edit</a> | <a href="user.php?id=<?php echo $data['id'];?>&delete=delete">Delete</a> | <a href="profile.php?id=<?php echo $data['id'];?>">Profile</a></td>
 		</tr>
 		<?php }?>
 	</table>
