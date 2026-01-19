@@ -1,0 +1,359 @@
+OOPS concept (Object Orianted programming) 
+
+1: class
+2: Encapsulation
+3: inheritance
+4:polimorphism
+5:abstract class and method
+
+6:interface
+7:traits
+8:Contructor/Destructor
+9:static Member(Class and Method)
+10:Design pattern
+
+1: class
+
+class Car{
+	
+	public $brand;
+
+	public __construct($brand){
+		this->brand=$brand;
+	}
+
+
+
+	public funtion color(){
+
+		echo "color and brand".this->brand;
+
+	}
+
+	public funtion model(){
+
+	echo "color and brand".this->brand;
+
+	}
+
+}
+
+$car= new Car();
+$car->color(""Red);
+$car->model("2025");
+
+
+2:Encapsulation
+
+class BankAccount(){
+
+	public __construct(){
+		
+	}
+
+	private $balance=0;
+	
+	public function getBalance(){
+		return $this->balance;
+	}
+	public function deposit($amount){
+	$this->balance += $amount;
+		
+	}
+
+}
+$account=new BankAccount($amount);
+$account->getBalance();
+$account->deposit("3000");
+
+3:inharitance
+
+class Animal{
+	public function eat(){
+	echo "Eating food";
+	}
+}
+
+class Dog extends Animal{
+	
+	public function bark(){
+	   echo "Dog is Bark!";
+
+	}
+	public function mauMau(){
+	   echo "Cat is mauMau!";
+
+	}
+}
+
+$Dog= new Dog();
+$Dog->eat();
+$Dog->bark();
+$Dog->mauMau();
+
+
+4:Polimorphism
+
+class Shape{
+	public function drow(){
+		echo "Drwaing Circle";
+	}
+}
+class Circle extends Shape{
+
+	public function drow(){
+		echo "Drwaing Circle";
+	}
+	
+}
+class Rectengle extends Shape{
+
+	public function drow(){
+		echo "Drwaing Rectengle";
+	}
+	
+}
+class Square extends Shape{
+
+	public function drow(){
+		echo "Drwaing Square";
+	}
+	
+}
+
+$Circle= new Circle();
+$Dog->drow();
+
+$Rectengle= new Rectengle();
+$Rectengle->drow();
+
+$Square= new Square();
+$Square->drow();
+
+5:abstract class and method
+
+abstract class Vehicle{
+	
+	abstract public start();
+	abstract public close();
+	abstract public seatMaking();
+}
+
+
+class Bike extends Vehicle{
+
+	public fuction start(){
+		echo "start Bike";
+	}
+	public fuction close(){
+		echo "Stop Bike";
+	}
+	public fuction seatMaking(){
+		echo "seat Bike completed";
+	}
+	
+	
+}
+$Bike= new Bike();
+$Bike->start();
+$Bike->close();
+$Bike->close();
+
+
+Interface:
+
+interface class Bank{
+	
+	public function craditCard();
+
+	function  paymentgetway(){
+	echo "Payment Done";
+	}
+
+	function pay();
+}
+
+
+class UpiPayment implements Bank{
+
+    $data=array('whichBank'=>'Visa','bankName'=>'sbi','amount'=>1000,"cardNo"=>'1234567890987654');
+
+	public function pay($amount){
+
+	echo "Paid".$amount."throwing UPI";
+
+	}
+	public function craditCard($data){
+
+	checkCreditCard($data["whichBank"]);
+
+	}
+
+	public  static function checkCreditCard($card){
+
+	 if($card==""Visa){
+	  return true;
+	 }
+
+
+	}
+	public void paymentgetway(){
+		echo "payment successfully!";
+
+	}
+
+
+	
+}
+
+traits:
+
+traits class Abcd{
+	
+	public void paymentgetway(){
+		echo "payment successfully!";
+
+	}
+}
+
+public class Customer{
+	
+	use Abcd as abcd;
+
+    abcd.paymentgetway(); ###return payment successfully!
+
+} 
+
+
+
+Contructor/Destructor:
+
+
+class XYZ{
+	
+	public __constructor(){
+
+		this.data(); // mendatory
+	}
+
+
+
+	public data(){
+	echo "dataShow";
+	}
+
+
+	public dataTwo(){
+	echo "dataShow two"; ##as a requremnet
+
+	}
+
+	public __destructor(){
+	dataTwo();
+	}
+
+}
+$obj=new XYZ();
+
+//$obj->dataTwo();
+///$obj->data(1234);
+
+static class Customer{
+	
+	void abcd(){
+	 echo "Customrt DATA";
+	}
+
+}
+
+
+class Bank{
+	
+  Customer::abcd();
+
+}
+
+
+##################################################
+
+
+
+S O L I D Principal:
+
+S: Single responsibility
+
+
+public class CustomerInfomarion{
+	
+	private static  CustomerInfomarion $getInfomarion=null;
+
+	private __constactor(){
+
+	}
+
+
+	pulbic static CustomerInfomarion getCustomerInfomarion($getInfomarion){
+	if($getInfomarion==null){
+
+	 return new CustomerInfomarion();
+
+	}
+	return $getInfomarion;
+
+	}
+}
+
+
+class Abcd{
+	
+	$obj=CustomerInfomarion::getCustomerInfomarion();
+
+	echo $obj;
+
+}
+
+O: open and close
+
+
+class Abcd{
+	
+	openTransection(){
+		echo "open task";
+	}
+
+
+	addTransection(){
+
+	}
+
+	closeTransection(){
+		echo "close task"
+	}
+
+
+}
+
+Liskov:
+
+class Abcd{
+	
+	openTransection(){
+		echo "open task";
+	}
+
+}
+class Efgh{
+
+	public __constuctor(){
+		super(Abcd);
+	}
+	
+	openTransection(){
+		echo "open task";
+	}
+
+
+}
+
+
+
