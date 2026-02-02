@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 class Admin extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -16,6 +17,7 @@ class Admin extends Authenticatable
      *
      * @var list<string>
      */
+    protected $guard = 'admin';
     protected $fillable = [
         'admin_name',
         'email',
@@ -44,5 +46,8 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    protected function getPolicy(){
+        return "hello";
     }
 }

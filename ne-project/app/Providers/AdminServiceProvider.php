@@ -19,7 +19,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot(): void
+    public function boot()
     {
         return "hello";
     }

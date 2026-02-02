@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use App\Http\Resourses\UserResourse;
 class ProductController extends Controller
 {
     /**
@@ -41,9 +41,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+       $users= Product::where('id',$id)->get();
+       return UserResource::collection($users);
     }
 
     /**
